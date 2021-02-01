@@ -14,6 +14,9 @@ services:
       SERVICE_NAME: app
       SERVICE_TAGS: dev
     working_dir: /var/www
+    volumes:
+       - ./:/var/www
+       - ./php/local.ini:/usr/local/etc/php/conf.d/local.ini
     networks:
       - app-network
 
@@ -28,6 +31,9 @@ services:
       - "443:443"
     networks:
       - app-network
+    volumes:
+      - ./:/var/www
+      - ./nginx/conf.d/:/etc/nginx/conf.d/
 
   #MySQL Service
   db:
@@ -42,6 +48,9 @@ services:
       MYSQL_ROOT_PASSWORD: laravel
       SERVICE_TAGS: dev
       SERVICE_NAME: mysql
+    volumes:
+      - dbdata:/var/lib/mysql
+      - ./mysql/my.cnf:/etc/mysql/my.cnf
     networks:
       - app-network
 
@@ -49,3 +58,8 @@ services:
 networks:
   app-network:
     driver: bridge
+
+#Volumes
+volumes:
+  dbdata:
+    driver: local
