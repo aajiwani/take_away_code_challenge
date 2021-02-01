@@ -1,5 +1,11 @@
 # Takeaway.com Code Challenge
 
+## Running the solution
+
+All the steps to run the solution is documented [here](./running_steps.md). Please go through them in order to run the solution successfully.
+
+---
+
 ## Problem Statement
 
 To streamline all transactional emails within Takeaway we want a transactional email
